@@ -5,16 +5,16 @@ import { inject } from 'mobx-react';
 export default class Sidebar extends Component {
     render() {
         const { store } = this.props;
-        const { toggleIsLoading, toggleCount } = store;
-        const message = store.sidebar.child1.message;
-        console.log('@store:', store.sidebar.child1.message)
         return (
             <div>
+                Sidebar:
                 <ul>
-                    <li>message: <b>{ store.sidebar.child1.message }</b></li>
+                    <li>UsersManagement.toggleCount: <b>{ store.toggleCount }</b></li>
+                    <li>Sidebar.name: <b>{ store.sidebar.name }</b></li>
+                    <li>Sidebar.message: <b>{ store.sidebar.message }</b></li>
+                    <li>Child1.message: <b>{ store.sidebar.child1.message }</b></li>
                 </ul>
-                <button onClick={ toggleIsLoading }>Toggle isLoading</button>
-                <div>{ toggleCount }</div>
+                <button onClick={ this.props.store.toggleIsLoading }>Toggle isLoading</button>
             </div>
         )
     }

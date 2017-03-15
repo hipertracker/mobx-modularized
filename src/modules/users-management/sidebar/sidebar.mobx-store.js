@@ -8,7 +8,8 @@ import { injectStores } from '../../../decorators';
 @injectStores(Child1, Child2)
 export default class Sidebar {
     @observable name = 'Sidebar';
-    @computed get toggleCount() {
-        return `SIDEBAR Clicked ${this.store.toggleCount}`;
+    
+    @computed get message() {
+        return `SIDEBAR message: ${this.store.toggleCount}`;
     }
 }

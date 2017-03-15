@@ -7,9 +7,10 @@ export function injectStores(...stores) {
         stores.forEach(store => {
             const name = store.name.toLowerCase();
             target[name] = new store();
-            // target[name] = observable(target[name]);
+            target[name] = observable(target[name]);
         })
-        target._setStore = autobind(action(function _setStore (value) {
+        target._setStore = autobind(action((value) => {
+            target.store = {};
             target.store = observable(target.store);
             stores.forEach(store => {
                 const name = store.name.toLowerCase();

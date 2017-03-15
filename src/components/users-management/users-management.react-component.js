@@ -9,10 +9,11 @@ export default class UsersManagement extends Component {
         const { isLoading, name, toggleCount, setName } = this.props.store;
         return (
             <div>
+                UsersManagement:
                 <ul>
                     <li>UsersManagement.name: <b>{ name }</b></li>
                     <li>UsersManagement.isLoading: <b>{ isLoading ? 'true' : 'false'}</b></li>
-                    <li>Clicked: { toggleCount }</li>
+                    <li>UsersManagement.toggleCount: { toggleCount }</li>
                 </ul>
                 <hr/>
                 <Sidebar/>
