@@ -11,8 +11,6 @@ export class App extends Component {
         super(props);
         const {organizationId} = props;
         this.store = new Store({ organizationId });
-
-        // TODO: make it more transparent, like @inject for React components
         this.store._setStore(this.store);
     }
 
