@@ -1,9 +1,9 @@
 import autobind from 'autobind-decorator';
 import { action, observable } from 'mobx';
 import Sidebar from './sidebar/sidebar.mobx-store';
-import { injectSubmodules } from '../../decorators';
+import { injectStores } from '../../decorators';
 
-@injectSubmodules(Sidebar)
+@injectStores(Sidebar)
 export default class UsersManagementStore {
     constructor(props) {
         this.organizationId = props.organizationId;
