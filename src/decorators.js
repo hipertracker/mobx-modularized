@@ -6,12 +6,10 @@ export function injectStores(...stores) {
         const target = classDecorator.prototype;
         stores.forEach(store => {
             const name = store.name.toLowerCase();
-            target[name] = new store();
-            target[name] = observable(target[name]);
+            target[name] = observable(new store());
         })
         target._setStore = autobind(action((value) => {
-            target.store = {};
-            target.store = observable(target.store);
+            target.store = observable(value);
             stores.forEach(store => {
                 const name = store.name.toLowerCase();
                 target[name]._setStore(value);
