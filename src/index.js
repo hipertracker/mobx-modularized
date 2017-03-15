@@ -13,7 +13,7 @@ export class App extends Component {
         this.store = new Store({ organizationId });
 
         // TODO: make it more transparent, like @inject for React components
-        this.store.setStore(this.store);
+        this.store._setStore(this.store);
     }
 
     render() {

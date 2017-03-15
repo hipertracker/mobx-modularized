@@ -1,7 +1,9 @@
 import autobind from 'autobind-decorator';
 import { action, observable } from 'mobx';
 import Sidebar from './sidebar/sidebar.mobx-store';
+import { injectSubmodules } from '../../decorators';
 
+@injectSubmodules(Sidebar)
 export default class UsersManagementStore {
     constructor(props) {
         this.organizationId = props.organizationId;
@@ -18,11 +20,4 @@ export default class UsersManagementStore {
     @autobind @action setName(value) {
         this.name = value;
     }
-
-    // TODO: move it into decorator
-    @observable sidebar = new Sidebar();
-    @action setStore(store) {
-        this.sidebar.setStore(store);
-    }
-
 }

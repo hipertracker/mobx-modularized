@@ -1,14 +1,9 @@
-import autobind from 'autobind-decorator';
-import { action, computed, observable} from 'mobx';
+import { computed } from 'mobx';
+import { injectSubmodules } from '../../../../decorators';
 
-export default class Child1Store {
+@injectSubmodules()
+export default class Child1 {
     @computed get toggleCount() {
         return `Clicked ${this.store.toggleCount}`;
-    }
-
-    // TODO: move it into decorator
-    @observable store;
-    @autobind @action setStore(value) {
-        this.store = value;
     }
 }
