@@ -1,3 +1,4 @@
+import autobind from 'autobind-decorator';
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import Sidebar from './sidebar/sidebar.react-component';
@@ -5,6 +6,14 @@ import Sidebar from './sidebar/sidebar.react-component';
 @inject('store')
 @observer
 export default class UsersManagement extends Component {
+    @autobind changeStoreName(e) {
+        this.props.store.setName(e.target.value);
+    }
+
+    @autobind changeSidebarName(e) {
+        this.props.store.sidebar.setName(e.target.value);
+    }
+
     render() {
         const {store} = this.props;
         return (
@@ -20,16 +29,10 @@ export default class UsersManagement extends Component {
                 <hr/>
                 <p>
                     Update <tt>store.name</tt> -
-                    <input
-                        value={store.name}
-                        onChange={e => store.setName(e.target.value)}
-                    />
+                    <input value={ store.name } onChange={ this.changeStoreName } />
                 </p>
                 <p>Update <tt>store.sidebar.name</tt> -
-                    <input
-                        value={store.sidebar.name}
-                        onChange={e => store.sidebar.setName(e.target.value)}
-                    />
+                    <input value={ store.sidebar.name } onChange={ this.changeSidebarName } />
                 </p>
             </div>
         )
