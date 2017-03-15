@@ -6,19 +6,31 @@ import Sidebar from './sidebar/sidebar.react-component';
 @observer
 export default class UsersManagement extends Component {
     render() {
-        const { isLoading, name, toggleCount, setName } = this.props.store;
+        const {store} = this.props;
         return (
             <div>
                 UsersManagement:
                 <ul>
-                    <li>UsersManagement.name: <b>{ name }</b></li>
-                    <li>UsersManagement.isLoading: <b>{ isLoading ? 'true' : 'false'}</b></li>
-                    <li>UsersManagement.toggleCount: { toggleCount }</li>
+                    <li>UsersManagement.name: <b>{ store.name }</b></li>
+                    <li>UsersManagement.isLoading: <b>{ store.isLoading ? 'true' : 'false'}</b></li>
+                    <li>UsersManagement.toggleCount: { store.toggleCount }</li>
                 </ul>
                 <hr/>
                 <Sidebar/>
                 <hr/>
-                <input value={name} onChange={e => setName(e.target.value)}/>
+                <p>
+                    Update <tt>store.name</tt> -
+                    <input
+                        value={store.name}
+                        onChange={e => store.setName(e.target.value)}
+                    />
+                </p>
+                <p>Update <tt>store.sidebar.name</tt> -
+                    <input
+                        value={store.sidebar.name}
+                        onChange={e => store.sidebar.setName(e.target.value)}
+                    />
+                </p>
             </div>
         )
     }
