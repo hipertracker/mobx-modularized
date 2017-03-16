@@ -1,7 +1,7 @@
 import { computed } from 'mobx';
-import { injectStores } from '../../../../decorators';
+import { connect } from '../../../../connect';
 
-@injectStores()
+@connect()
 export default class Child1 {
     @computed get message() {
         return `store.sidebar.child1.message - computed for store.toggleCount: ${this.store.toggleCount}`;
